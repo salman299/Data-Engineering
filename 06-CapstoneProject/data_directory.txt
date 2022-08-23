@@ -1,0 +1,63 @@
+Immigration
+PK - record_id
+|-- record_id: integer (Immigration cicid)
+|-- country_birth_code: (3 Digit immigrant country code) FK to country table
+|-- country_residence_code: integer (3 Digit residence country code) FK to country table
+|-- arrival_port_code: string (3 Digit i94Port code)
+|-- arrdate: string (Immigrant date of arrival) FK to date table
+|-- depdate: string (Immigrant data of departure) FK to date table
+|-- i94mode: integer (Immigrant mode of travel )
+    1 = 'Air'
+    2 = 'Sea'
+    3 = 'Land'
+    9 = 'Not reported'
+|-- state_code: string (Immigrant state_code) FK to demographic table
+|-- i94visa: integer (visa category) 
+    1 = Business
+    2 = Pleasure
+    3 = Student
+|-- biryear: integer (Year of Birth)
+|-- gender: string (Gender of the immigrant)
+|-- visatype_id: integer (nullable = true) FK to visatype table
+
+Demographics
+PK - id
+|-- id: integer (sequential generated id)
+|-- City: string (uppercase city name)
+|-- State: string (state name)
+|-- StateCode: string (state code)
+|-- TotalPopulation: long (aggregated field)
+|-- FemalePopulation: long (aggregated field)
+|-- MedianAge: double (aggregated field)
+|-- NumberVeterans: long (aggregated field)
+|-- ForeignBorn: long (aggregated field)
+|-- MalePopulation: long (aggregated field)
+|-- AverageHouseholdSize: double (aggregated field)
+|-- AmericanIndianAndAlaskaNative: long (aggregated field)
+|-- Asian: long (aggregated field)
+|-- BlackOrAfricanAmerican: long (aggregated field)
+|-- HispanicOrLatino: long (aggregated field)
+|-- White: long (aggregated field)
+
+Country
+PK - code
+|-- code: integer (country code)
+|-- country: string (name)
+|-- Temperature: double (Aggregated from temperature datase)
+|-- Latitude: string (Aggregated from temperature datase)
+|-- Longitude: string (Aggregated from temperature datase)
+
+
+Visatype
+PK - id
+|-- id: integer (sequential key)
+|-- visatype: string (Aggregated from immigration table)
+
+Date
+PK - date
+|-- date: string (Generated from immigration table (Arrival and Departure dates))
+|-- day: integer
+|-- week: integer
+|-- month: integer
+|-- year: integer
+|-- weekday: integer
